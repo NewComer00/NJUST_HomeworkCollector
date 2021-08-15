@@ -1,0 +1,6 @@
+Flask==2.0.1
+bootstrap_flask==1.7.0
+flask_wtf==0.15.1
+pytz==2021.1
+Werkzeug==2.0.1
+WTForms==2.3.3
