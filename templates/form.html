@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% from 'bootstrap/form.html' import render_form, render_field, render_form_row %}
+
+{% block content %}
+    <h1>2020 云数据管理课程</h1>
+    <h2>第 {{ homework_number }} 次作业提交</h2>
+
+    <form method="POST"
+        action=""
+        enctype="multipart/form-data"
+        onSubmit="return confirm('重复提交将只保留最新一次提交文件，是否提交？');"
+    >
+        {{ form.csrf_token }}
+        {{ render_field(form.name) }}
+        {{ render_field(form.number) }}
+        {{ render_field(form.file) }}
+        {{ render_field(form.submit) }}
+    </form>
+
+    <b>***重复提交只保留最新一次提交文件***</b>
+{% endblock %}
