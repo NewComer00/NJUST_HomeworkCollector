@@ -39,9 +39,9 @@ mkdir -p ${APP_ROOT}/logs/uwsgi
 
 while [[ "$#" -gt 0 ]]; do
     case $1 in
-	start) app_start ;;
-	stop) app_stop ;;
-	reload) app_reload ;;
+        start) app_start ;;
+        stop) app_stop ;;
+        reload) app_reload ;;
         -n|--number) HOMEWORK_NUMBER="$2"; shift ;;
         *) echo "Unknown parameter passed: $1"; exit 1 ;;
     esac
