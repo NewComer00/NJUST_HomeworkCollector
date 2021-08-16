@@ -25,7 +25,7 @@ pip3 install uwsgi uwsgitop supervisor
 ```
 
 * Cygwin：  
-首先安装Nginx，Cygwin安装Nginx的步骤[见此](##Cygwin安装Nginx)。  
+首先安装Nginx，Cygwin安装Nginx的步骤[见此](#Cygwin安装Nginx)。  
 接着，使用[apt-cyg](https://github.com/transcode-open/apt-cyg)或者原生的包管理器安装```python3-devel```和```libintl-devel```包。  
 最后，安装uWSGI, uwsgitop和Supervisor：
 ```
