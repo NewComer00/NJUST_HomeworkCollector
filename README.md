@@ -1,5 +1,5 @@
 # 环境需求
-* Linux
+* Linux  
 Windows系统可以使用Cygwin，已测试✅
 * Python3
 
@@ -16,7 +16,7 @@ source bin/activate  # 激活该虚拟环境，激活成功后命令行会出现
 
 ## 2. 安装Nginx, uWSGI, uwsgitop和Supervisor
 
-* Linux：
+* Linux：  
 （CentOS可以使用yum安装Nginx）
 ```
 sudo apt update
@@ -24,9 +24,9 @@ sudo apt install nginx
 pip3 install uwsgi uwsgitop supervisor
 ```
 
-* Cygwin：
-首先安装Nginx，Cygwin安装Nginx的步骤[见此](##Cygwin安装Nginx)。
-接着，使用[apt-cyg](https://github.com/transcode-open/apt-cyg)或者原生的包管理器安装```python3-devel```和```libintl-devel```包。
+* Cygwin：  
+首先安装Nginx，Cygwin安装Nginx的步骤[见此](##Cygwin安装Nginx)。  
+接着，使用[apt-cyg](https://github.com/transcode-open/apt-cyg)或者原生的包管理器安装```python3-devel```和```libintl-devel```包。  
 最后，安装uWSGI, uwsgitop和Supervisor：
 ```
 pip3 install uwsgi uwsgitop supervisor
@@ -50,13 +50,13 @@ chmod +x app_manager.sh
 ```
 ./app_manager.sh [-n <数字>] start
 ```
-<数字>表示这是<第几次>交作业，如1表示第一次。
+<数字>表示这是<第几次>交作业，如1表示第一次。  
 启动后可以在浏览器中访问网站：
 ```
 http://<机器的ip地址>:8080/
 ```
-注：
-在执行start命令后，Nginx可能会提示一些文件或目录无法找到。执行```ps -a | grep nginx```来查询是否存在Nginx相关进程，若存在则Nginx已经启动。
+注：  
+在执行start命令后，Nginx可能会提示一些文件或目录无法找到。执行```ps -a | grep nginx```来查询是否存在Nginx相关进程，若存在则Nginx已经启动。  
 若Nginx已经启动，我们需要先执行下面描述的“关闭应用”命令（未启动则不需要执行），接着在相应提示位置新建文件或目录，再次启动应用即可。
 ## 关闭应用
 ```
@@ -88,7 +88,7 @@ approot/app_manager stop
 /etc/rc.d/init.d/nginx install
 ```
 
-5. 安装好的后台程序位于```/usr/sbin/nginx```。
+5. 安装好的后台程序位于```/usr/sbin/nginx```。  
 将```/usr/sbin```添加至环境变量，运行帮助指令：
 ```
 nginx -h
