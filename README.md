@@ -12,7 +12,7 @@ virtualenv ~/app_env  # 虚拟环境的路径和名称也可以自己指定
 cd ~/app_env
 source bin/activate  # 激活该虚拟环境，激活成功后命令行会出现 (app_env) 字样
 ```
-若之后想要取消激活，直接在命令行输入 deactivate 命令即可。
+若之后想要取消激活，直接在命令行输入```deactivate```命令即可。
 
 ## 2. 安装Nginx, uWSGI, uwsgitop和Supervisor
 
