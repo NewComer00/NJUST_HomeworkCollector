@@ -26,7 +26,7 @@ pip3 install uwsgi uwsgitop supervisor
 
 * Cygwin：  
 首先安装Nginx，Cygwin安装Nginx的步骤[见此](#Cygwin安装Nginx)。  
-接着，使用[apt-cyg](https://github.com/transcode-open/apt-cyg)或者原生的包管理器安装```python3-devel```和```libintl-devel```包。  
+接着，使用[apt-cyg](https://github.com/transcode-open/apt-cyg)或者原生的包管理器安装```python3-devel```和```libintl-devel```包。下一步安装过程中，编译whl文件时需要用到。  
 最后，安装uWSGI, uwsgitop和Supervisor：
 ```
 pip3 install uwsgi uwsgitop supervisor
@@ -46,18 +46,22 @@ chmod +x app_manager.sh
 
 # 使用方法
 请先确保虚拟环境已经激活。
+* Cygwin:  
+```app_manager.sh```脚本用到了```envsubst```命令，Cygwin需要安装```gettext```包来获取这个命令。
+
 ## 启动应用
 ```
 ./app_manager.sh [-n <数字>] start
 ```
-<数字>表示这是<第几次>交作业，如1表示第一次。  
+<数字>表示这是<第几次>交作业，如1表示第一次。```[]``` 之间的内容可不填，默认值为1。  
 启动后可以在浏览器中访问网站：
 ```
 http://<机器的ip地址>:8080/
 ```
 注：  
 在执行start命令后，Nginx可能会提示一些文件或目录无法找到。执行```ps -a | grep nginx```来查询是否存在Nginx相关进程，若存在则Nginx已经启动。  
-若Nginx已经启动，我们需要先执行下面描述的“关闭应用”命令（未启动则不需要执行），接着在相应提示位置新建文件或目录，再次启动应用即可。
+若Nginx未启动，我们在相应提示位置新建文件或目录，再次启动应用即可。若Nginx已经启动，我们需要先执行下面描述的“关闭应用”命令，再新建和启动。
+
 ## 关闭应用
 ```
 ./app_manager.sh stop
@@ -87,6 +91,7 @@ approot/app_manager stop
 ```
 /etc/rc.d/init.d/nginx install
 ```
+可能会提示一些路径不存在，但只要最后输出“done”，即表示成功。
 
 5. 安装好的后台程序位于```/usr/sbin/nginx```。  
 将```/usr/sbin```添加至环境变量，运行帮助指令：
