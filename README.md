@@ -6,7 +6,9 @@ Windows系统可以使用Cygwin，已测试✅
 # 功能介绍
 这是一个基于Python Flask框架编写的Web应用，用于收集课程的班级作业。  
 本App使用Nginx配合uWSGI作为Web服务器，同时使用Supervisor对uWSGI进行管理。结构如下图所示：  
-![结构图](../assets/structure?raw=true)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/NewComer00/NJUST_CloudData/assets/structure.png" alt="结构图" width=720>
+</p>
 
 # 安装方法
 ## 1. 创建一个Python虚拟环境
