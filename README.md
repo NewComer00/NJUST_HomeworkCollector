@@ -57,7 +57,11 @@ chmod +x app_manager.sh
 ```
 
 # 使用方法
-⚠️⚠️⚠️若使用了虚拟环境，请先确保虚拟环境已经激活⚠️⚠️⚠️
+⚠️⚠️⚠️若使用了虚拟环境，请先确保虚拟环境已经激活⚠️⚠️⚠️  
+觉得麻烦的话，可以将激活环境命令加入app_manager脚本```export APP_ROOT=...```这行之后：
+```
+source ${APP_ROOT}/../bin/activate
+```
 * Cygwin:  
 ```app_manager.sh```脚本用到了```envsubst```命令，Cygwin需要安装```gettext```包来获取这个命令。
 
@@ -96,13 +100,17 @@ http://<机器的ip地址>:<端口号>/
 ./app_manager.sh [options] restart
 ```
 
-# How to stop app?
-approot/app_manager stop
+# 日志与监控
+应用启动后，Nginx, uWSGI和Supervisor的运行日志位于```logs/```目录下，在应用无法正常运行时可供参考。  
+Python程序本身的输出和报错不在命令行显示，被重定向并保存至uWSGI相关的日志中。在Nginx和uWSGI的日志中可以查看服务器收到的请求信息。  
+  
 
-4. ```uwsgitop http://localhost:5001```
+使用uwsgitop可以查看当前网站服务的负载情况，监控端口在uWSGI的配置文件中默认为5001：
+```
+uwsgitop http://localhost:5001
+```
 
 # 附录
-
 ## Cygwin安装Nginx
 1. 以管理员身份运行Cygwin。
 
@@ -117,7 +125,12 @@ approot/app_manager stop
 可能会提示一些路径不存在，但只要最后输出“done”，即表示成功。
 
 5. 安装好的后台程序位于```/usr/sbin/nginx```。  
-将```/usr/sbin```添加至环境变量，运行帮助指令：
+将```/usr/sbin```添加至Cygwin的环境变量：
+```
+export PATH="$PATH:/usr/sbin"
+# 这是临时方法，为避免麻烦可以考虑将这句加入app_manager脚本开头
+```
+运行帮助指令：
 ```
 nginx -h
 ```
