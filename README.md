@@ -130,7 +130,7 @@ uwsgitop http://localhost:5001
 export PATH="$PATH:/usr/sbin"
 # 这是临时方法，为避免麻烦可以考虑将这句加入app_manager脚本开头
 ```
-运行帮助指令：
+6. 运行帮助指令：
 ```
 nginx -h
 ```
