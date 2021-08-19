@@ -17,7 +17,7 @@ events {
 
 
 http {
-    
+
     server_tokens off;
 
     include       mime.types;
@@ -36,13 +36,13 @@ http {
     keepalive_timeout  65;
 
     #gzip  on;
-    
+
     limit_req_zone $binary_remote_addr zone=mylimit:10m rate=2r/s;
     server {
-        listen       8080;
+        listen       ${PORT_NUMBER};
         server_name  localhost;
-        
-        client_max_body_size	100m;
+
+        client_max_body_size    100m;
         #charset koi8-r;
 
         access_log  ${APP_ROOT}/logs/nginx/host.access.log  combined;
@@ -54,7 +54,7 @@ http {
 
             uwsgi_pass 127.0.0.1:5000;
             include uwsgi_params;
-        } 
+        }
 
         # redirect server error pages to the static page /50x.html
         #

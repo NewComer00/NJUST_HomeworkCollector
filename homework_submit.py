@@ -2,8 +2,8 @@
 
 import os
 
-# cmdline arg parser
-import argparse
+# environment var parser
+from envparse import env
 
 # random string
 import uuid
@@ -34,19 +34,21 @@ from werkzeug.exceptions import HTTPException, default_exceptions, _aborter
 from flask_bootstrap import Bootstrap
 
 
-parser = argparse.ArgumentParser()
-parser.add_argument("N", help="This is the <N>th homework assigned by the teacher.",
-                    type=int, default=1)
-args = parser.parse_args()
+HOMEWORK_NUMBER = env('HOMEWORK_NUMBER', cast=int,
+        default=1)
+PAGE_HEADER = env('PAGE_HEADER', cast=str,
+        default="云数据管理课程")
+APP_ROOT = env('APP_ROOT', cast=str,
+        default=os.path.dirname(os.path.realpath(__file__)))
 
-HOMEWORK_NUMBER = args.N
+print(HOMEWORK_NUMBER)
 
-APP_ROOT = os.path.dirname(os.path.realpath(__file__))
 UPLOAD_FOLDER = r'uploads/%d/' % HOMEWORK_NUMBER
 UPLOAD_FOLDER = os.path.join(APP_ROOT, UPLOAD_FOLDER)
 DATABASE_FILE = r'database/%d/records.csv' % HOMEWORK_NUMBER
 DATABASE_FILE = os.path.join(APP_ROOT, DATABASE_FILE)
 
+# allowed types and size for files to be uploaded
 ALLOWED_EXTENSIONS = ['zip']
 MAX_CONTENT_LENGTH = 100 * 1024 * 1024
 
@@ -119,7 +121,9 @@ def test_form():
     form = ExampleForm()
 
     if request.method == 'GET':
-        return render_template('form.html', form=form, homework_number=HOMEWORK_NUMBER)
+        return render_template('form.html', form=form,
+                homework_number=HOMEWORK_NUMBER,
+                page_header=PAGE_HEADER)
 
     if request.method == 'POST':
         if form.validate():
@@ -133,7 +137,7 @@ def test_form():
 
             os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
             homework_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            
+
             time_mark = datetime.fromtimestamp(int(time.time()),
                         pytz.timezone('Asia/Shanghai')).strftime('%Y-%m-%d %H:%M:%S %Z%z')
             record = [student_name,
@@ -145,7 +149,7 @@ def test_form():
             add_to_db(DATABASE_FILE, record)
             flash("文件上传成功！", 'success')
             return redirect(request.url)
-    
+
         else:
             for err_field,err_msg in form.errors.items():
                 for err in err_msg:

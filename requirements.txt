@@ -1,3 +1,4 @@
+envparse==0.2.0
 Flask==2.0.1
 bootstrap_flask==1.7.0
 flask_wtf==0.15.1
