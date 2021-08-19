@@ -28,6 +28,12 @@ app_start()
 
 app_stop()
 {
+    #TODO
+    # NOTICE:
+    # ALL variables are of DEFAULT values here (include those in CONFIG files).
+    # ALL customized values are LOST UNLESS SPECIFIED in cmdline.
+    # EDIT WITH CAUTION!!!
+
     echo "Stopping the App..."
     supervisorctl -c ${APP_ROOT}/configs/supervisord.cfg stop all
     kill -s SIGTERM "$(cat ${APP_ROOT}/logs/supervisord/supervisord.pid)"

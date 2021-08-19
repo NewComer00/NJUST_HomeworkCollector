@@ -10,6 +10,11 @@ Windows系统可以使用Cygwin，已测试✅
   <img src="https://raw.githubusercontent.com/NewComer00/NJUST_CloudData/assets/structure.png" alt="结构图" width=720>
 </p>
 
+网页运行图（PC端/移动端）：
+<p align="center">
+  <img src="https://raw.githubusercontent.com/NewComer00/NJUST_CloudData/assets/web_page.png" alt="网页预览图" width=720>
+</p>
+
 # 安装方法
 ## 1. 创建一个Python虚拟环境
 （也可以不使用虚拟环境，但建议在虚拟环境中操作）
