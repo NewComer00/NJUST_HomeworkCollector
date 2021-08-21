@@ -48,6 +48,23 @@ app_restart()
     app_start
 }
 
+usage()
+{
+    printf '\nUsage: %s [OPTIONS] COMMAND\n' "$0"
+    printf '\n\t%s\n\n' "Manage Web App by COMMAND with OPTIONS."
+    printf 'Example:\n\t%s -n 0 -b "Test" -p 8081 start\n\n' "$0"
+    printf '%s\n' "OPTIONS:"
+    printf '\t%s\t\t%s\n' "-n --number [N]" "The <N>th homework submission (Default: 1)"
+    printf '\t%s\t\t%s\n' "-b --header [HEADER]" "The header of the webpage (Default: '2021 云数据管理课程')"
+    printf '\t%s\t\t%s\n' "-p --port [PORT]" "The TCP port this App is on (Default: 8080)"
+    printf '\t%s\t\t%s\n' "-h --help" "Show this help message"
+    printf '%s\n' "COMMAND:"
+    printf '\t%s\t\t%s\n' "start" "Start the App"
+    printf '\t%s\t\t%s\n' "stop" "Stop the App"
+    printf '\t%s\t\t%s\n' "restart" "Restart the App"
+    printf '\t%s\t\t%s\n' "help" "Show this help message"
+}
+
 mkdir -p ${APP_ROOT}/logs/nginx
 mkdir -p ${APP_ROOT}/logs/supervisord
 mkdir -p ${APP_ROOT}/logs/supervisorctl
@@ -58,10 +75,12 @@ while [[ "$#" -gt 0 ]]; do
         start) app_start ;;
         stop) app_stop ;;
         restart) app_restart ;;
+        help) usage ;;
         -n|--number) HOMEWORK_NUMBER="$2"; shift ;;
         -b|--header) PAGE_HEADER="$2"; shift ;;
         -p|--port) PORT_NUMBER="$2"; shift ;;
-        *) echo "Unknown parameter passed: $1"; exit 1 ;;
+        -h|--help) usage ;;
+        *) echo "Unknown parameter passed: $1"; usage; exit 1 ;;
     esac
     shift
 done
