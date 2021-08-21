@@ -21,7 +21,7 @@ import unicodedata
 import re
 
 # flask
-from flask import Flask, render_template, request, redirect, flash, Markup, jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash, Markup, jsonify
 from flask_wtf import FlaskForm, CSRFProtect
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from wtforms import StringField, SubmitField, BooleanField, PasswordField, IntegerField, TextField,\
@@ -148,13 +148,13 @@ def test_form():
                       ]
             add_to_db(DATABASE_FILE, record)
             flash("文件上传成功！", 'success')
-            return redirect(request.url)
+            return redirect(url_for('test_form'))
 
         else:
             for err_field,err_msg in form.errors.items():
                 for err in err_msg:
                     flash(err, 'danger')
-            return redirect(request.url)
+            return redirect(url_for('test_form'))
 
 
 @app.errorhandler(404)
