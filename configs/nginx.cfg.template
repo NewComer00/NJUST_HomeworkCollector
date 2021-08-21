@@ -51,7 +51,7 @@ http {
         # location / { try_files $uri app; }
         location / {
             limit_req zone=mylimit burst=50 nodelay;
-            limit_req_status 555;
+            limit_req_status 503;
 
             uwsgi_pass unix:///tmp/uwsgi.sock;
             include uwsgi_params;
@@ -59,10 +59,10 @@ http {
 
         # redirect server error pages to the static page /50x.html
         #
-        error_page   500 502 503 504  /50x.html;
-        location = /50x.html {
-            root   html;
-        }
+        #error_page   500 502 503 504  /50x.html;
+        #location = /50x.html {
+        #    root   html;
+        #}
 
         # proxy the PHP scripts to Apache listening on 127.0.0.1:80
         #

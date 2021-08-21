@@ -162,14 +162,5 @@ def page_404(e):
     return render_template('404.html'), 404
 
 
-class TripleFive(HTTPException):
-    code = 555
-default_exceptions[555] = TripleFive
-_aborter.mapping[555] = TripleFive
-@app.errorhandler(555)
-def page_555(e):
-    return render_template('555.html'), 555
-
-
 if __name__ == '__main__':
     app.run(host = '0.0.0.0')
