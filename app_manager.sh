@@ -17,6 +17,9 @@ export PAGE_HEADER="2021 云数据管理课程"
 # the port Nginx listening
 export PORT_NUMBER=8080
 
+export PATH="$PATH:/usr/sbin"
+source ${APP_ROOT}/../bin/activate
+
 app_start()
 {
     echo "Starting the App..."

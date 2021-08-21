@@ -67,11 +67,11 @@ bootstrap = Bootstrap(app)
 
 class ExampleForm(FlaskForm):
     name = StringField("姓名",
-               render_kw={'placeholder': "英雄，请留下姓名！"},
+               render_kw={'placeholder': "来者留名！姓名字数应为2~20"},
                validators=[DataRequired("英雄，请留下姓名！"),
                Length(min=2,max=20,message="用户名字数应为2~20哟~")])
     number = StringField("学号",
-               render_kw={'placeholder': "学号也请留下"},
+               render_kw={'placeholder': "学号为11~12位数字或字母"},
                validators=[DataRequired("学号也请留下"),
                Regexp(regex=r'^([a-z]|[A-Z]|[0-9]){11,12}$',message="学号需要11~12位数字或字母")])
     file = FileField("上传zip文件",
