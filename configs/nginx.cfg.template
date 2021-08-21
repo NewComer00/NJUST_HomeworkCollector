@@ -42,6 +42,7 @@ http {
         listen       ${PORT_NUMBER};
         server_name  localhost;
 
+        client_body_temp_path   /tmp 2 3;
         client_max_body_size    100m;
         #charset koi8-r;
 
@@ -52,7 +53,7 @@ http {
             limit_req zone=mylimit burst=4 nodelay;
             limit_req_status 555;
 
-            uwsgi_pass 127.0.0.1:5000;
+            uwsgi_pass unix:///tmp/uwsgi.sock;
             include uwsgi_params;
         }
 
