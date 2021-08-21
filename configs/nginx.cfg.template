@@ -37,7 +37,7 @@ http {
 
     #gzip  on;
 
-    limit_req_zone $binary_remote_addr zone=mylimit:10m rate=2r/s;
+    limit_req_zone $binary_remote_addr zone=mylimit:10m rate=50r/s;
     server {
         listen       ${PORT_NUMBER};
         server_name  localhost;
@@ -50,7 +50,7 @@ http {
 
         # location / { try_files $uri app; }
         location / {
-            limit_req zone=mylimit burst=4 nodelay;
+            limit_req zone=mylimit burst=50 nodelay;
             limit_req_status 555;
 
             uwsgi_pass unix:///tmp/uwsgi.sock;

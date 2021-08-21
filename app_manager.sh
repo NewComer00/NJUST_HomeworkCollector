@@ -7,6 +7,9 @@ set -e
 
 # absolute path this script is in
 export APP_ROOT=$(dirname "$(readlink -f "$0")")
+# process number for uwgsi multiprocessing, equals (#virtual cores * 2) by default
+export PROCESS_NUM=$(expr $(nproc --all) \* 2)
+
 # the <N>th homework assigned by the teacher
 export HOMEWORK_NUMBER=1
 # the page header
