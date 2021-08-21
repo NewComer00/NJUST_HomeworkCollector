@@ -5,7 +5,7 @@ Windows系统可以使用Cygwin，已测试✅
 
 # 功能介绍
 这是一个基于Python Flask框架编写的Web应用，用于收集课程的班级作业。  
-本App使用Nginx配合uWSGI作为Web服务器，同时使用Supervisor对uWSGI进行管理。Nginx只响应从指定端口进入的请求，因此服务可以比较安全地挂在公网上。国内很多云服务提供商都有云服务器免费体验的活动，虽然配置不高，但运行该应用（收集一个班的作业）已经足够。本项目的Nginx配置中采取了限流措施，每秒钟最多接受两次请求。  
+本App使用Nginx配合uWSGI作为Web服务器，同时使用Supervisor对uWSGI进行管理。Nginx只响应从指定端口进入的请求，因此服务可以比较安全地挂在公网上。国内很多云服务提供商都有云服务器免费体验的活动，虽然配置不高，但运行该应用（收集一个班的作业）已经足够。本项目的Nginx配置中采取了限流措施，脚本和uWSGI配置中设置了进程和线程数，可以自行修改。  
 结构如下图所示：  
 <p align="center">
   <img src="https://raw.githubusercontent.com/NewComer00/NJUST_HomeworkCollector/assets/structure.png" alt="结构图" width=720>
