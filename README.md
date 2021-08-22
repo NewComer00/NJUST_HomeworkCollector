@@ -9,10 +9,10 @@ Windows系统可以使用Cygwin，已测试✅
 本项目的Nginx配置中采取了限流措施，当Nginx服务器触发限流时，网页会返回503错误，此时可以刷新网页重试。此外，脚本和uWSGI的配置文件中设置了服务的进程数和线程数，可以自行修改。  
 
 整体结构如下图所示： 
-![结构图](assets/structure.png)
+![结构图](assets/structure.jpg)
 
 网页运行图（PC端/移动端）：
-![网页预览图](assets/web_page.png)
+![网页预览图](assets/web_page.jpg)
 
 # 安装方法
 ## 1. 创建一个Python虚拟环境
