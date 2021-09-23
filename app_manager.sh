@@ -33,7 +33,7 @@ app_stop()
 {
     #TODO
     # NOTICE:
-    # ALL variables are of DEFAULT values here (include those in CONFIG files).
+    # ALL variables are of DEFAULT values here (especially those in cfg files, but except nginx.cfg).
     # ALL customized values are LOST UNLESS SPECIFIED in cmdline.
     # EDIT WITH CAUTION!!!
 
