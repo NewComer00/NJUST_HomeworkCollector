@@ -1,6 +1,6 @@
 # 环境需求
-* Linux  
-Windows系统可以使用WSL2或Cygwin，已测试✅
+* Linux（包括Windows下的WSL/WSL2）  
+Windows系统也可以使用Cygwin，已测试✅
 * Python3
 
 # 功能介绍
